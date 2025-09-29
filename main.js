@@ -130,5 +130,5 @@ const updateCartUI = () => {
   cartTotal.innerText = `$${total}`;
 };
 
-// 🚀 Run
+//Run
 loadAllPlants();
