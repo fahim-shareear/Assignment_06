@@ -5,3 +5,10 @@
 button{
     cursor: pointer;
 }
+
+
+#about ul{
+    padding-left: 30px;
+    list-style: circle;
+}
+
