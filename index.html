@@ -1,78 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>green earth</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Green Earth</title>
 </head>
-<body>
-<div class="navbar bg-green-700 shadow-sm">
-  <div class="navbar-start">
-    <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+<body class="font-roboto bg-gray-50">
+
+  <!-- Navbar -->
+  <div class="navbar bg-green-700 shadow-sm">
+    <div class="navbar-start">
+      <div class="dropdown">
+        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+          </svg>
+        </div>
+        <ul tabindex="0" class="menu menu-sm dropdown-content bg-green-700 rounded-box z-1 mt-3 w-52 p-2 shadow">
+          <li><a class="text-white">About</a></li>
+          <li><a class="text-white" href="#">Gallery</a></li>
+          <li><a class="text-white">Plant a tree</a></li>
+        </ul>
       </div>
-      <ul
-        tabindex="0"
-        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-white">
-            <li class="text-white"><a>About</a></li>
-            <li class="text-white"><a href="#">Gallery</a></li>
-            <li class="text-white"><a>Plant a tree</a></li>
-          </ul>
-        </li>
+      <a class="btn btn-ghost text-xl text-white">GREEN EARTH</a>
+    </div>
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1">
+        <li><a class="text-white">About</a></li>
+        <li><a class="text-white" href="#">Gallery</a></li>
+        <li><a class="text-white">Plant a tree</a></li>
       </ul>
     </div>
-    <a class="btn btn-ghost text-xl text-white">GREEN EARTH</a>
+    <div class="navbar-end">
+      <a class="btn rounded-4xl bg-yellow-400 text-green-700">Plant A Tree</a>
+    </div>
   </div>
-  <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
-      <li class="text-white"><a>About</a></li>
-      <li class="text-white"><a href="#">Gallery</a></li>
-      <li class="text-white"><a>Plant a tree</a></li>
-    </ul>
+
+  <!-- Banner -->
+  <section class="banner w-full bg-green-200 flex items-center justify-around py-10">
+    <div>
+      <img src="./assets/hero-leaf1.png" alt="banner">
+    </div>
+    <div class="h-full flex flex-col text-center space-y-5 max-w-xl">
+      <h1 class="text-4xl font-bold">Plant a Tree, Grow a Future</h1>
+      <p class="text-lg text-[#4a5a5f] font-medium px-4">
+        Join our mission to plant 1 million trees and make the Earth greener for future generations.
+      </p>
+      <button class="bg-yellow-400 text-green-700 p-3 rounded-full w-48 mx-auto text-xl">Get Involved</button>
+    </div>
+    <div>
+      <img src="./assets/hero-leaf2.png" alt="">
+    </div>
+  </section>
+
+  <!-- Categories & Plants -->
+  <section class="w-full flex items-start justify-center bg-green-100 p-6 gap-6" id="category-container">
+  
+  <!-- Categories Sidebar (left) -->
+  <aside class="w-[300px] flex flex-col" id="left-sidebar">
+    <h1 class="text-xl font-bold mb-4">Categories</h1>
+    <div id="category-main" class="flex flex-col gap-2">
+      <!-- buttons will load here -->
+    </div>
+  </aside>
+
+  <!-- Plants Grid (middle) -->
+  <div class="flex-1 flex flex-col justify-end">
+    <div class="plants_section grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="plant-container">
+      <!-- plant cards will load here -->
+    </div>
   </div>
-  <div class="navbar-end">
-    <a class="btn rounded-4xl bg-[#facc15] text-green-500 mr-15">Plant A Tree</a>
+
+  <!-- Right Div -->
+  <div class="w-[500px] rounded-md h-[600px] bg-white flex flex-col p-4">
+  <h1 class="font-bold text-3xl mb-4">Your Cart</h1>
+  <div id="cart-items" class="flex-1 overflow-y-auto space-y-4">
+    <!-- Cart items will appear here -->
+  </div>
+  <div class="mt-4 flex justify-between font-bold text-xl">
+    <span>Total:</span>
+    <span id="cart-total">0</span>
   </div>
 </div>
 
-<section class="banner w-[100%] bg-green-200 flex items-center justify-around">
-    <div>
-        <img src="./assets/hero-leaf1.png" alt="banner">
-    </div>
-    <div class="h-[100%] flex flex-col text-center space-y-5">
-        <h1 class="text-5xl font-bold">Plant a Tree, Grow a Future</h1>
-        <p class="text-[20px] text-[#4a5a5f] font-medium p-4 text-wrap w-[700px]">
-            Join our mission to plant 1 million trees and make the Earth greener for future
-            generations.
-        </p>
-        <button class="bg-yellow-400 text-green-500 p-3 rounded-full w-[200px] mx-auto text-xl">Get Involved</button>
-    </div>
-    <div>
-        <img src="./assets/hero-leaf2.png" alt="">
-    </div>
-</section>
-
-<section class="w-[450px] id="category-container">
-    <aside class="absoulute left-0 flex flex-col mt-6 p-5">
-        <h1 class="text-xl text-left font-bold">Categories</h1>
-        <div class="w-[100%]" id="category-main">
-            <!-- <button class="font-bold hover:bg-green-600 mt-3 w-[300px] text-left rounded-xl p-3 transition-all 0.4s ease-linear text-xl pointer hover:text-white">All Trees</button> -->
-        </div>
-    </aside>
-    
 
 </section>
 
 
-
-<script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
