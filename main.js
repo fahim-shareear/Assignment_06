@@ -5,6 +5,7 @@ const modalContent = document.getElementById("modal-content");
 
 // Load all plants from API
 const loadAllPlants = () => {
+  manageSpinner(true); // show spinner before fetching
   fetch("https://openapi.programming-hero.com/api/plants")
     .then(res => res.json())
     .then((json) => {
@@ -14,6 +15,17 @@ const loadAllPlants = () => {
     })
     .catch(err => console.error("Error fetching plants:", err));
 };
+
+// Spinner function
+function manageSpinner(status) {
+  if (status === true) {
+    document.getElementById('spinner').classList.remove('hidden'); // show spinner
+    document.getElementById('plant-container').classList.add('hidden'); // hide plants
+  } else {
+    document.getElementById('plant-container').classList.remove('hidden'); // show plants
+    document.getElementById('spinner').classList.add('hidden'); // hide spinner
+  }
+}
 
 const removeActive = () => {
   const categoryButtons = document.querySelectorAll(".category-btn");
@@ -63,6 +75,7 @@ const displayPlants = (plants) => {
 
   if (plants.length === 0) {
     plantContainer.innerHTML = `<div class="text-center col-span-full py-10"><h2 class="text-2xl font-bold text-gray-500">No Plants Found</h2></div>`;
+    manageSpinner(false);
     return;
   }
 
@@ -101,6 +114,8 @@ const displayPlants = (plants) => {
     const cartBtn = card.querySelector(`#add-cart${plant.id}`);
     cartBtn.addEventListener("click", () => addToCart(plant));
   });
+
+  manageSpinner(false);
 };
 
 const addToCart = (plant) => {
