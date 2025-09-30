@@ -87,6 +87,7 @@ const displayPlants = (plants) => {
         <h3 class="text-lg font-bold mb-4">${plant.name}</h3>
         <img src="${plant.image}" alt="${plant.name}" class="w-full h-64 object-cover rounded mb-4">
         <p class="font-semibold mb-2">Category: ${plant.category}</p>
+        <p class="font-semibold mb-2">Price: ${plant.price}</p>
         <p class="mb-4">${plant.description}</p>
         <div class="modal-action">
           <form method="dialog">
