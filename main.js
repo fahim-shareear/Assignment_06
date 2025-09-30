@@ -1,5 +1,7 @@
 let allPlants = [];
-let cart = []; // keep track of items
+let cart = [];
+const modal = document.getElementById("my_modal_1");
+const modalContent = document.getElementById("modal-content");
 
 // Load all plants from API
 const loadAllPlants = () => {
@@ -55,17 +57,12 @@ const displayCategories = (plants) => {
   });
 };
 
-// Display plant cards
 const displayPlants = (plants) => {
   const plantContainer = document.getElementById("plant-container");
   plantContainer.innerHTML = "";
 
   if (plants.length === 0) {
-    plantContainer.innerHTML = `
-      <div class="text-center col-span-full py-10">
-        <h2 class="text-2xl font-bold text-gray-500">No Plants Found</h2>
-      </div>
-    `;
+    plantContainer.innerHTML = `<div class="text-center col-span-full py-10"><h2 class="text-2xl font-bold text-gray-500">No Plants Found</h2></div>`;
     return;
   }
 
@@ -74,7 +71,7 @@ const displayPlants = (plants) => {
     card.className = "card w-[320px] h-[450px] bg-white rounded-xl shadow-md flex flex-col p-3";
     card.innerHTML = `
       <img src="${plant.image}" alt="${plant.name}" class="w-full h-[200px] rounded-lg mb-3 object-cover">
-      <h1 class="font-bold text-lg mb-2">${plant.name}</h1>
+      <h1 class="font-bold text-lg mb-2 cursor-pointer">${plant.name}</h1>
       <p class="text-gray-600 text-sm mb-2">${plant.description}</p>
       <div class="flex items-center justify-between mb-3">
         <span class="text-green-700 font-semibold border-2 border-green-500 rounded-lg p-1">${plant.category}</span>
@@ -84,19 +81,32 @@ const displayPlants = (plants) => {
     `;
     plantContainer.appendChild(card);
 
-    //Add event listener directly after rendering button
+    // Modal on plant name click
+    card.querySelector("h1").addEventListener("click", () => {
+      modalContent.innerHTML = `
+        <h3 class="text-lg font-bold mb-4">${plant.name}</h3>
+        <img src="${plant.image}" alt="${plant.name}" class="w-full h-64 object-cover rounded mb-4">
+        <p class="font-semibold mb-2">Category: ${plant.category}</p>
+        <p class="mb-4">${plant.description}</p>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn bg-green-600 text-white rounded-xl py-2 px-4">Close</button>
+          </form>
+        </div>
+      `;
+      modal.showModal();
+    });
+
     const cartBtn = card.querySelector(`#add-cart${plant.id}`);
     cartBtn.addEventListener("click", () => addToCart(plant));
   });
 };
 
-//Add item to cart
 const addToCart = (plant) => {
   cart.push(plant);
   updateCartUI();
 };
 
-//Update cart UI
 const updateCartUI = () => {
   const cartContainer = document.getElementById("cart-items");
   const cartTotal = document.getElementById("cart-total");
@@ -106,7 +116,6 @@ const updateCartUI = () => {
 
   cart.forEach((item, index) => {
     total += item.price;
-
     const cartItem = document.createElement("div");
     cartItem.className = "bg-gray-300 w-full flex items-center justify-between p-2 rounded-md";
 
@@ -117,8 +126,6 @@ const updateCartUI = () => {
       </div>
       <div class="text-red-600 cursor-pointer font-bold">X</div>
     `;
-
-    //Remove item on click
     cartItem.querySelector("div:last-child").addEventListener("click", () => {
       cart.splice(index, 1);
       updateCartUI();
@@ -130,5 +137,4 @@ const updateCartUI = () => {
   cartTotal.innerText = `$${total}`;
 };
 
-//Run
 loadAllPlants();
